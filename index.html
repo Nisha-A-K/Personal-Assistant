@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Personal Health Assistant</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Personal Health Assistant</h1>
+
+        <!-- Section 1: User Profile -->
+        <div id="user-profile">
+            <h2>Your Profile</h2>
+            <div class="profile-grid">
+                <input type="text" id="username" placeholder="Username" class="full-width">
+                <input type="number" id="height" placeholder="Height (cm)">
+                <input type="number" id="weight" placeholder="Weight (kg)">
+                
+                <select id="job" class="full-width">
+                    <option value="" disabled selected>-- Select Your Job Type --</option>
+                    <option value="sedentary office worker">Sedentary / Office Worker</option>
+                    <option value="active manual labor">Active / Manual Labor</option>
+                    <option value="high-pressure professional">High-Stress Professional</option>
+                    <option value="student">Student</option>
+                    <option value="other">Other</option>
+                </select>
+
+                <div class="time-inputs">
+                    <div>
+                        <label for="office-start">Office Start Time:</label>
+                        <input type="time" id="office-start">
+                    </div>
+                    <div>
+                        <label for="office-end">Office End Time:</label>
+                        <input type="time" id="office-end">
+                    </div>
+                </div>
+
+                <div class="button-bar">
+                    <button class="primary-btn" id="update-profile-btn">Update Profile & Get Schedule</button>
+                    <button class="delete-btn" id="delete-profile-btn">Delete Profile</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 2: Add Engagements -->
+        <div id="engagements">
+            <h2>Add a Custom Engagement</h2>
+            <div class="engagement-form">
+                <input type="text" id="engagement-name" placeholder="Event Name (e.g., Team Meeting)" style="flex-grow: 2;">
+                <div class="engagement-time-inputs">
+                    <div>
+                        <label for="engagement-start-time">From:</label>
+                        <input type="time" id="engagement-start-time">
+                    </div>
+                    <div>
+                        <label for="engagement-end-time">To:</label>
+                        <input type="time" id="engagement-end-time">
+                    </div>
+                </div>
+                <button class="primary-btn" id="add-engagement-btn">Add</button>
+            </div>
+        </div>
+
+        <!-- Section 3: The Schedule -->
+        <div id="schedule">
+            <h2>Today's Schedule</h2>
+            <ul id="schedule-list">
+                <!-- The generated schedule will appear here -->
+            </ul>
+        </div>
+    </div>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>

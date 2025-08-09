@@ -1,0 +1,247 @@
+/* --- General Body and Container Styling --- */
+body {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+.container {
+    max-width: 600px;
+    margin: 2em auto;
+    padding: 2em;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    background-color: white;
+}
+
+h1, h2 {
+    font-family: Georgia, serif;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 0.5em;
+    margin-bottom: 1em;
+}
+
+h1 {
+    text-align: center;
+    border-bottom: none;
+    margin-bottom: 1.5em;
+}
+
+/* --- Form Element Styling (Inputs, Selects, Buttons) --- */
+input, select {
+    display: block;
+    width: 100%;
+    padding: 0.75em;
+    margin-bottom: 1em;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1em;
+    box-sizing: border-box; /* Crucial for consistent sizing */
+}
+
+button {
+    border: none;
+    border-radius: 4px;
+    padding: 0.75em 1.5em;
+    font-size: 1em;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+button:hover {
+    opacity: 0.9;
+}
+
+/* --- Section-Specific Layouts --- */
+
+/* Profile Section */
+#user-profile .profile-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Two equal columns */
+    gap: 1em;
+}
+
+#user-profile .profile-grid .full-width {
+    grid-column: 1 / -1; /* Make an item span the full width */
+}
+
+/* Office Hours Section */
+.time-inputs {
+    grid-column: 1 / -1; /* Span full width within the grid */
+    display: flex;
+    gap: 1em;
+}
+
+.time-inputs > div {
+    flex: 1;
+}
+
+.time-inputs label {
+    display: block;
+    margin-bottom: 0.25em;
+    font-size: 0.9em;
+    color: #666;
+}
+
+/* Engagements Section */
+#engagements {
+    margin-top: 2em;
+}
+
+.engagement-form {
+    display: flex;
+    align-items: center;
+    gap: 1em;
+}
+
+.engagement-form input {
+    margin-bottom: 0; /* Override default margin */
+}
+
+/* --- Button Bar Styling --- */
+.button-bar {
+    grid-column: 1 / -1; /* Span full width */
+    display: flex;
+    gap: 1em;
+    margin-top: 1em;
+}
+
+.button-bar button {
+    flex-grow: 1; /* Make buttons share space equally */
+}
+
+/* Primary and Danger Button Colors */
+.primary-btn {
+    background-color: #007BFF;
+    color: white;
+}
+
+.delete-btn {
+    background-color: #dc3545;
+    color: white;
+}
+
+/* --- Schedule List Styling --- */
+
+/* --- Replace all of your old #schedule-list styles with this new section --- */
+
+/* The main container for the timeline */
+#schedule-list {
+    list-style-type: none;
+    padding: 0;
+    margin-top: 1.5em;
+    position: relative; /* Establishes a positioning context for the timeline bar */
+}
+
+/* The vertical timeline bar, created with a pseudo-element */
+#schedule-list::after {
+    content: '';
+    position: absolute;
+    left: 20px; /* Aligns with the center of the icons */
+    top: 5px;
+    bottom: 5px;
+    width: 2px;
+    background: #e0e0e0;
+    z-index: 1;
+}
+
+/* Each individual item (card) in the schedule */
+#schedule-list li {
+    padding: 1em 1em 1em 60px; /* Left padding makes space for the icon */
+    margin-bottom: 1em;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    position: relative; /* For positioning the icon */
+    display: flex;
+    align-items: center;
+    border-left: 5px solid transparent; /* We'll color this based on type */
+}
+
+/* The circular icon container */
+.schedule-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #f4f4f4;
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 2; /* Sits on top of the timeline bar */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2em;
+    border: 2px solid white;
+}
+
+/* The container for the text content */
+.schedule-content {
+    flex-grow: 1;
+}
+
+.schedule-time {
+    font-weight: 600;
+    color: #333;
+    font-size: 0.9em;
+    margin-bottom: 0.25em;
+}
+
+.schedule-name {
+    color: #555;
+}
+
+/* --- Color Coding for Different Event Types --- */
+
+/* Personal Events (Green) */
+#schedule-list li.personal { border-left-color: #28a745; }
+.schedule-icon[data-icon-type="personal"] { background-color: #28a745; color: white; }
+
+/* Health Reminders (Blue) */
+#schedule-list li.health { border-left-color: #007BFF; }
+.schedule-icon[data-icon-type="health"] { background-color: #007BFF; color: white; }
+
+/* Routine Tasks (Grey) */
+#schedule-list li.routine { border-left-color: #6c757d; }
+.schedule-icon[data-icon-type="routine"] { background-color: #6c757d; color: white; }
+
+/* Meditation (Purple) */
+#schedule-list li.meditation { border-left-color: #ab47bc; }
+.schedule-icon[data-icon-type="meditation"] { background-color: #ab47bc; color: white; }
+
+/* Meals (Amber) */
+#schedule-list li.meal { border-left-color: #ffc107; }
+.schedule-icon[data-icon-type="meal"] { background-color: #ffc107; color: white; }
+
+/* Work (Dark Grey) */
+#schedule-list li.work { border-left-color: #343a40; }
+.schedule-icon[data-icon-type="work"] { background-color: #343a40; color: white; }
+
+/* Exercise (Orange) */
+#schedule-list li.exercise { border-left-color: #fd7e14; }
+.schedule-icon[data-icon-type="exercise"] { background-color: #fd7e14; color: white; }
+
+
+/* --- Add these styles for the new engagement time inputs --- */
+.engagement-form {
+    align-items: flex-end; /* Align items to the bottom */
+}
+
+.engagement-time-inputs {
+    display: flex;
+    gap: 0.5em;
+}
+
+.engagement-time-inputs > div {
+    flex: 1;
+}
+
+.engagement-time-inputs label {
+    display: block;
+    margin-bottom: 0.25em;
+    font-size: 0.9em;
+    color: #666;
+}
+}
